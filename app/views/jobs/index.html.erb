@@ -2,7 +2,7 @@
   <div class="hero-body">
     <div class="container">
       <h1 class="title">
-        レシピグラマー一覧
+        レシピ一覧
       </h1>
     </div>
   </div>
@@ -11,25 +11,23 @@
 <section class="section">
   <div class="container">
     <div class="columns is-multiline">
-      <% @users.each do |user| %>
-        <div class="column is-3">
+      <% @jobs.each do |job| %>
+        <div class="column is-4">
           <div class="card">
-            <div class="card-content">
-              <div class="card-image">
-                <figure class="image">
-                  <%= link_to user_path(user) do %>
-                  <% end %>
-                </figure>
-              </div>
+            <div class="card-image">
+              <figure class="image is-4by3">
+              </figure>
             </div>
             <div class="card-content">
               <div class="media">
+                <div class="media-left">
+                </div>
                 <div class="media-content">
-                  <div class="title"><%=link_to user.username, user_path(user) %></div>
                 </div>
               </div>
+
               <div class="content">
-                投稿数：<%= user.jobs.count %>
+                <time><%= job.updated_at.strftime("%Y-%m-%d %H:%M") %></time>更新
               </div>
             </div>
           </div>

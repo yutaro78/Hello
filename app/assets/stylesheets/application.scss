@@ -19,3 +19,9 @@
 .notification:not(:last-child){
 	margin-bottom: 0;
 }
+.main-image {
+	height: 940px;
+	background-image: url(flower.jpg);
+	background-repeat: no-repeat;
+	background-size: contain;
+}

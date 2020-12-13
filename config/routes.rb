@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
-  get 'users/index'
-  get 'users/show'
-  get 'users/edit'
+  devise_scope :user do
+    get '/users/sign_out' => 'devise/sessions#destroy'
+  end
   devise_for :users
   root to: "home#index"
+  resources :jobs
+  resources :users
+
 end
