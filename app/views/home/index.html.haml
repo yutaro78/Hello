@@ -7,7 +7,7 @@
       .columns.is-centered
         .column.is-5
           -if user_signed_in? 
-            いつもご利用ありがとうございます
+
           -else 
             %br/
             = link_to "ログイン", new_user_session_path, class: "button is-warning is-fullwidth"
