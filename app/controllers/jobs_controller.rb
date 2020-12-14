@@ -5,22 +5,22 @@ class JobsController < ApplicationController
   end
   def create
     @job = Job.new(job_params)
+    # @job = current_user.jobs.build(job_params)
     if @job.save
       redirect_to job_path(@job), notice: "投稿に成功しました。"
     else
       render :new
     end
   end
-
   def index
-    @jobs = Job.page(params[:page]).per(6)
+    
+    @jobs = Job.page(params[:page]).per(4).order('id DESC')
   end
-
   def show
     @job = Job.find(params[:id])
+    # @user = User.find(params[:id])
     @jobs = Job.order("id DESC").limit(5)
   end
-
   def edit
     @job = Job.find(params[:id])
     if @job.user != current_user
