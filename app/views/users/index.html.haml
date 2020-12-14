@@ -2,7 +2,7 @@
   .hero-body
     .container
       %h1.title
-        レシピグラマー一覧
+        企業一覧
 %section.section
   .container
     .columns.is-multiline
@@ -15,3 +15,4 @@
                   .title= link_to user.username, user_path(user)
               .content
                 投稿数：#{user.jobs.count}
+      = paginate @users

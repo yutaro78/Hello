@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   def index
-    @users = User.all
+    @users = User.page(params[:page]).per(8).order('id DESC')
   end
   def show
     @user = User.find(params[:id])
-    
+    @jobs = Job.page(params[:page]).per(4).order('id DESC')
   end
   def edit
     @user = User.find(params[:id])

@@ -13,16 +13,25 @@
             = link_to "ログイン", new_user_session_path, class: "button is-warning is-fullwidth"
             %br/
             = link_to "新規登録", new_user_registration_path, class: "button is-warning is-fullwidth"
+.child
+  .main-image
+  .main-image
+  .main-image
+%section.section
+  .post__new
+    新着求人6件
+  .container
+    .columns.is-multiline
       - @jobs.each do |job|
-        .job__list
-          = link_to job_path(job.id) do
-            .job__list__body
-              .job__box__name
-                =job.title
-      -# - @users.each do |user|
-      -#   .job__list
-      -#     = link_to user_path(user.id) do
-      -#       .job__list__body
-      -#         .job__box__name
-      -#           =.username
-      -#         .job__box__price
+        .column.is-4
+          .card
+            .card-content
+              .media
+                .media-left
+                .media-content
+                  = link_to job_path(job) do
+                    %p.title.is-4= job.title
+                  = job.user.username
+              .content
+                %time>= job.updated_at.strftime("%Y-%m-%d %H:%M")
+                更新
