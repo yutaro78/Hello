@@ -1,3 +1,22 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.job__list{
+  display: inline-block;
+  position: relative;
+  width:220px;
+  height:100%;
+  &__body{
+    color: #333;
+    padding: 12px;
+    height:95px;
+  }
+}
+.job__box__name{
+  overflow: hidden;
+  line-height: 1.5;
+  font-size: 16px;
+  text-align: left;
+  margin-bottom: 5px;
+}

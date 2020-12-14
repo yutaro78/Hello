@@ -1,0 +1,26 @@
+%section.hero.is-success
+  .hero-body
+    .container
+      %h1.title
+        ユーザー編集
+- if @user.errors.any?
+  .notification.is-danger
+    %h2 ユーザー名またはメールアドレスが入力されていません
+    %ul
+      - @user.errors.full_messages.each do |message|
+        %li= message
+%section.section
+  .container
+    .columns.is-centered
+      .column.is-6
+        = form_for @user do |f|
+          .field
+            = f.label :username, "ユーザー名", class: "label"
+            = f.text_field :username, class: "input"
+          .field
+            = f.label :email, "メールアドレス", class: "label"
+            = f.email_field :email, class: "input"
+          .field
+            = f.label :profile, "プロフィール", class: "label"
+            = f.text_area :profile, class: "textarea"
+          = f.submit "更新", class: "button is-success"

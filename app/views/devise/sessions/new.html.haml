@@ -1,0 +1,25 @@
+%section.hero.is-info
+  .hero-body
+    .container
+      %h1.title
+        ログイン画面
+%section.section
+  .container
+    .columns.is-centered
+      .column.is-5
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          .field
+            = f.label :email, class: "label"
+            %p.control.has-icons-left
+              = f.email_field :email, autofocus: true, autocomplete: "email", :placeholder => "email", class: "input"
+              %span.icon.is-small.is-left
+                %i.fas.fa-envelope
+          .field
+            = f.label :password, class: "label"
+            %p.control.has-icons-left
+              = f.password_field :password, autocomplete: "current-password", :placeholder => "password", class: "input"
+              %span.icon.is-small.is-left
+                %i.fas.fa-lock
+          .actions
+            = f.submit "Log in", class: "button is-success"
+        = render "devise/shared/links"
