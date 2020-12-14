@@ -56,3 +56,4 @@ gem 'devise'
 gem "bulma-rails"
 gem "haml-rails", "~> 2.0"
 gem 'erb2haml'
+gem 'kaminari'

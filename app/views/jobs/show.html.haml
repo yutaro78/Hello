@@ -13,12 +13,11 @@
             .media
               .media-content
                 %p.title.is-4= @job.title
-                
+                = @job.user.username
             .content
               %table.table.is-narrow
                 %tr
                   %th 求人情報
-                  = @job.user.username
                 %tr
                   %td= simple_format @job.body
                   -if user_signed_in? && current_user.id == @job.user_id
