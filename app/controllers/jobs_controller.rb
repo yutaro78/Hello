@@ -1,10 +1,11 @@
 class JobsController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index, :show]
   def new
     @job = Job.new
   end
   def create
-    @job = current_user.jobs.build(job_params)
+    @job = Job.new(job_params)
+    # @job = current_user.jobs.build(job_params)
     if @job.save
       redirect_to job_path(@job), notice: "投稿に成功しました。"
     else
@@ -16,6 +17,8 @@ class JobsController < ApplicationController
   end
   def show
     @job = Job.find(params[:id])
+    # @user = User.find(params[:id])
+    @jobs = Job.order("id DESC").limit(5)
   end
   def edit
     @job = Job.find(params[:id])
@@ -31,6 +34,7 @@ class JobsController < ApplicationController
       render :edit
     end
   end
+
   def destroy
     job = Job.find(params[:id])
     job.destroy
@@ -39,6 +43,11 @@ class JobsController < ApplicationController
 
   private
   def job_params
-    params.require(:job).permit(:title, :body,)
+    params.require(:job).permit(:title, :body,).merge(user_id: current_user.id)
   end
+
+  def user_params
+    params.require(:user).permit(:username, :email, :profile)
+  end
+
 end

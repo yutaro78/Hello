@@ -1,0 +1,20 @@
+%section.hero.is-success
+  .hero-body
+    .container
+      %h1.title
+        求人一覧
+%section.section
+  .container
+    .columns.is-multiline
+      - @jobs.each do |job|
+        .column.is-4
+          .card
+            .card-content
+              .media
+                .media-left
+                .media-content
+                  = link_to job_path(job) do
+                    %p.title.is-4= job.title
+              .content
+                %time>= job.updated_at.strftime("%Y-%m-%d %H:%M")
+                更新

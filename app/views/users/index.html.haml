@@ -1,0 +1,17 @@
+%section.hero.is-success
+  .hero-body
+    .container
+      %h1.title
+        レシピグラマー一覧
+%section.section
+  .container
+    .columns.is-multiline
+      - @users.each do |user|
+        .column.is-3
+          .card
+            .card-content
+              .media
+                .media-content
+                  .title= link_to user.username, user_path(user)
+              .content
+                投稿数：#{user.jobs.count}

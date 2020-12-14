@@ -1,0 +1,28 @@
+%section.section
+  %article.media
+    .media-content
+      .content.has-text-centered
+        %p
+          %strong.is-size-1{:style => "font-family: cursive;"} Hello
+      .columns.is-centered
+        .column.is-5
+          -if user_signed_in? 
+            いつもご利用ありがとうございます
+          -else 
+            %br/
+            = link_to "ログイン", new_user_session_path, class: "button is-warning is-fullwidth"
+            %br/
+            = link_to "新規登録", new_user_registration_path, class: "button is-warning is-fullwidth"
+      - @jobs.each do |job|
+        .job__list
+          = link_to job_path(job.id) do
+            .job__list__body
+              .job__box__name
+                =job.title
+      -# - @users.each do |user|
+      -#   .job__list
+      -#     = link_to user_path(user.id) do
+      -#       .job__list__body
+      -#         .job__box__name
+      -#           =.username
+      -#         .job__box__price
