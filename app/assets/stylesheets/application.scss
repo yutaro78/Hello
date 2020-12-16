@@ -19,14 +19,7 @@
 .notification:not(:last-child){
 	margin-bottom: 0;
 }
-.main-image {
-  height: 100px;
-  width:100%;
-	background-image: url(child.jpg);
-	background-repeat: no-repeat;
-  background-size: contain;
-  
-}
+
 .hero.is-success {
   background-color:gray;
 }
