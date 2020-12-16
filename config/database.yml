@@ -53,6 +53,11 @@ test:
 #   username: Hello
 #   password: <%= ENV['HELLO_DATABASE_PASSWORD'] %>
 
+  # production:
+  # <<: *default
+  #     url: <%= ENV['DATABASE_URL'] %>
   production:
   <<: *default
-      url: <%= ENV['DATABASE_URL'] %>
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
