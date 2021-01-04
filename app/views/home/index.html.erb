@@ -1,0 +1,56 @@
+<section class='section'>
+  <article class='media'>
+    <div class='media-content'>
+      <div class='content has-text-centered'>
+        <p>
+          <strong class='is-size-1' style='font-family: cursive;'>Hello</strong>
+        </p>
+      </div>
+      <div class='columns is-centered'>
+        <div class='column is-5'>
+          <%if user_signed_in?%>
+
+          <%else%>
+            <%= link_to "ログイン", new_user_session_path, class: "button is-warning is-fullwidth" %>
+            <br>
+            <%= link_to "新規登録", new_user_registration_path, class: "button is-warning is-fullwidth" %>
+          <%end%>
+          </div>
+      </div>
+    </div>
+  </article>
+</section>
+<section class='section'>
+  <div class='post__new'>
+    新着求人6
+  </div>
+  <div class="container">
+    <div class="columns is-multiline">
+      <% @jobs.each do |job| %>
+        <div class="column is-4">
+          <div class="card">
+            <div class="title">
+              <%= link_to job_path(job) do %>
+                <div class="job-title"><%= job.title %></div>
+              <% end %>
+            </div>
+            <div class="card-content">
+              <div class="media">
+                <div class="media-left">
+
+                </div>
+                <div class="media-content">
+                投稿者
+                  <div class="username"><%=link_to job.user.username, user_path(job.user) %></div>
+                </div>
+              </div>
+              <div class="content">
+                <time><%= job.updated_at.strftime("%Y-%m-%d %H:%M") %></time>更新
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

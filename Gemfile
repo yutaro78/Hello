@@ -55,8 +55,6 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem "bulma-rails"
-gem "haml-rails", "~> 2.0"
-gem 'erb2haml'
 gem 'kaminari'
 
 group :production do
