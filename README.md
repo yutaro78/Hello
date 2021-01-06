@@ -26,6 +26,7 @@ Things you may want to cover:
 
 アプリ名　Hello
 
+URL https://hello-people-japan.herokuapp.com/
 新規登録、ログイン、ログアウト
 仕事の投稿
 仕事の一覧確認
