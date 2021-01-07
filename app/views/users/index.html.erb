@@ -4,6 +4,21 @@
       <h1 class="title">
         企業一覧
       </h1>
+      <h1>企業検索</h1>
+      <%= search_form_for @q, url: search_users_path do |f| %>
+      <div class="navbar-left">
+        <div class="navbar-item">
+          <div class="field has-addons">
+            <div class="control">
+              <%= f.search_field :username_cont ,class: 'input'%>
+            </div>
+            <div class="control">
+              <%= f.submit '検索', class: 'button is-info' %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
     </div>
   </div>
 </section>

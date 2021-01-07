@@ -1,0 +1,38 @@
+<section class="hero is-success">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        検索結果
+      </h1>
+</section>
+<table>
+  <tbody>
+  <section class="section">
+    <div class="container">
+      <div class="columns is-multiline">
+      <% if @results.any? %>
+        <% @results.each do |user| %>
+          <div class="column is-3">
+            <div class="card">
+              <div class="card-content">
+              </div>
+              <div class="card-content">
+                <div class="media">
+                  <div class="media-content">
+                    <div class="title"><%=link_to user.username, user_path(user) %></div>
+                  </div>
+                </div>
+                <div class="content">
+                  投稿数：<%= user.jobs.count %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+          <%= paginate @users %>
+      <% else %>
+      <h3><%= '検索結果がありません。' %></h3>
+      <% end %>
+  </tbody>
+</table>
+
