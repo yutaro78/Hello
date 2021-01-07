@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   end
   devise_for :users
   root to: "home#index"
-  resources :jobs
+  resources :jobs do
+    collection do
+      get 'search'
+    end
+  end
   resources :users
 
 end

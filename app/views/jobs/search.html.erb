@@ -1,0 +1,46 @@
+<section class="hero is-success">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        検索結果
+      </h1>
+</section>
+<table>
+  <tbody>
+  <section class="section">
+    <div class="container">
+      <div class="columns is-multiline">
+      <% if @results.any? %>
+        <% @results.each do |job| %>
+          <div class="column is-4">
+            <div class="card">
+              <div class="title">
+                <%= link_to job_path(job) do %>
+                  <div class="job-title"><%= job.title %></div>
+                <% end %>
+              </div>
+              <div class="card-content">
+                <div class="media">
+                  <div class="media-left">
+
+                  </div>
+                  <div class="media-content">
+                  投稿者
+                    <div class="username"><%=link_to job.user.username, user_path(job.user) %></div>
+                  </div>
+                </div>
+
+                <div class="content">
+                  <time><%= job.updated_at.strftime("%Y-%m-%d %H:%M") %></time>更新
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+          <%= paginate @jobs %>
+      <% else %>
+      <h3><%= '検索結果がありません。' %></h3>
+      <% end %>
+  </tbody>
+</table>
+

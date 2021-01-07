@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   def index
     @users = User.page(params[:page]).per(8).order('id DESC')
+    @jobs = Job.page(params[:page]).per(6).order('id DESC')
   end
   def show
     @user = User.find(params[:id])

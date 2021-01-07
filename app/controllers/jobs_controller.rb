@@ -1,5 +1,6 @@
 class JobsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_q, only: [:index, :search]
   def new
     @job = Job.new
   end
@@ -41,8 +42,17 @@ class JobsController < ApplicationController
     job.destroy
     redirect_to user_path(job.user), notice: "投稿を削除しました。"
   end
+  def search
+    @results = @q.result
+    @jobs = Job.page(params[:page]).per(6).order('id DESC')
+    
+  end
 
   private
+  def set_q
+    @q = Job.ransack(params[:q])
+  end
+
   def job_params
     params.require(:job).permit(:title, :body,).merge(user_id: current_user.id)
   end
