@@ -30,7 +30,7 @@
                   <td><%= simple_format @job.body %></td>
                 </tr>
               </table>
-              <% if @job.user.id == current_user.id %>
+              <% if user_signed_in? && current_user.id == @job.user_id %>
                 <%= link_to "編集画面へ", edit_job_path(@job), class: "button is-success" %>
               <% end %>
             </div>
