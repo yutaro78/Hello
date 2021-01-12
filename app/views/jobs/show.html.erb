@@ -17,8 +17,23 @@
           </div>
           <div class="card-content">
             <div class="media">
-              <div class="media-content">
+              <div class="media-contents">
                 <p class="title is-4"><%= @job.title %></p>
+                  <tr>
+                    <td>
+                      <% if user_signed_in? &&current_user.already_favorited?(@job) %>
+                        <%= link_to job_favorites_path(@job), method: :delete do %>
+                          <i class="fas fa-heart"></i>
+                        <% end %>
+                        <%= @job.favorites.count %>
+                      <% else %>
+                        <%= link_to job_favorites_path(@job), method: :post do %>
+                          <i class="far fa-heart"></i>
+                        <% end %>
+                        <%= @job.favorites.count %>
+                      <% end %>
+                    </td>
+                  </tr>
               </div>
             </div>
             <div class="content">

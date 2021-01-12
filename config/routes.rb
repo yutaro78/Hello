@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "home#index"
   resources :jobs do
+    resource :favorites, only: [:create, :destroy]
     collection do
       get 'search'
     end

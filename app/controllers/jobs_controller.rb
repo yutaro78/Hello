@@ -1,6 +1,7 @@
 class JobsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_q, only: [:index, :search]
+  before_action :authenticate_user!, only: [:show, :create]
   def new
     @job = Job.new
   end
@@ -21,6 +22,7 @@ class JobsController < ApplicationController
     @job = Job.find(params[:id])
     # @user = User.find(params[:id])
     @jobs = Job.order("id DESC").limit(5)
+    @favorite = Favorite.new
   end
   def edit
     @job = Job.find(params[:id])
