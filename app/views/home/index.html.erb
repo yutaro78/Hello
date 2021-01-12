@@ -47,6 +47,21 @@
               </div>
               <div class="content">
                 <time><%= job.updated_at.strftime("%Y-%m-%d %H:%M") %></time>更新
+                <tr>
+                  <td>
+                    <% if user_signed_in? &&current_user.already_favorited?(job) %>
+                      <%= link_to job_favorites_path(job), method: :delete do %>
+                        <i class="fas fa-heart"></i>
+                      <% end %>
+                      <%= job.favorites.count %>
+                    <% else %>
+                      <%= link_to job_favorites_path(job), method: :post do %>
+                        <i class="far fa-heart"></i>
+                      <% end %>
+                      <%= job.favorites.count %>
+                    <% end %>
+                  </td>
+                </tr>
               </div>
             </div>
           </div>
