@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :set_q, only: [:index, :search]
   before_action :authenticate_user!, only: [:show, :create]
   def index
-    @users = User.page(params[:page]).per(8).order('id DESC')
+    @users = User.page(params[:page]).per(6).order('id DESC')
     @jobs = Job.page(params[:page]).per(6).order('id DESC')
   end
   def show
@@ -30,7 +30,11 @@ class UsersController < ApplicationController
     @users = User.page(params[:page]).per(6).order('id DESC')
     
   end
-
+  def favorite
+    favorites = Favorite.where(user_id: current_user.id).pluck(:job_id) 
+    @favorite_list = Job.find(favorites) 
+    @jobs = Job.page(params[:page]).per(4).order('id DESC')
+  end
   private
   def set_q
     @q = User.ransack(params[:q])

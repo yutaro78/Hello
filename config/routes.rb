@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :users do
     collection do
       get 'search'
+      get 'favorite'
     end
   end
 
