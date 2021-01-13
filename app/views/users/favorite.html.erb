@@ -1,0 +1,40 @@
+<section class="hero is-success">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        いいねしたお仕事一覧
+      </h1>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-multiline">
+      <% if @favorite_list.present? %>
+        <% @favorite_list.each do |job| %>
+          <div class="column is-4">
+            <div class="card">
+              <div class="title">
+                <%= link_to job_path(job) do %>
+                  <div class="job-title"><%= job.title %></div>
+                <% end %>
+              </div>
+              <div class="card-content">
+                <div class="media">
+                  <div class="media-left">
+                  </div>
+                  <div class="media-content">
+                  投稿者
+                    <div class="username"><%=link_to job.user.username, user_path(job.user) %></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> 
+        <% end %>
+      <% end %>
+      <%= paginate @jobs %>
+    </div>
+  </div>
+</section>

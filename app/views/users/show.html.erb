@@ -14,9 +14,7 @@
     <div class="columns is-centered">
       <div class="column is-8">
         <div class="columns is-centered">
-          <div class="column is-4">
-          </div>
-          <div class="column is-8">
+          <div class="column is-10">
             <table class="table is-fullwidth">
               <tr>
                 <td class="is-size-4">
@@ -28,6 +26,9 @@
                 </td>
                 <td>
                     <%= link_to "編集", edit_user_path(@user), class: "button is-primary" %>
+                </td>
+                <td>
+                    <%= link_to 'いいねしたお仕事',favorite_users_path(@user), class: "button is-warning" %>
                 </td>
                 <% end %>
               </tr>
@@ -88,3 +89,5 @@
     </div>
   </div>
 </section>
+
+
